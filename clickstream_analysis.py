@@ -9,7 +9,6 @@ device_counts = df['devicetype'].value_counts()
 plt.title('Device Type Distribution')
 # TODO: Create a pie chart showing the distribution of device types
 
-plt.savefig('device_types.png', bbox_inches='tight')
 
 # TODO: Clear plot
 
@@ -18,5 +17,3 @@ plt.savefig('device_types.png', bbox_inches='tight')
 product_counts = df[df["product_type"] != "N/A"]["product_type"].value_counts()
 plt.title('Product Type Popularity')
 # TODO: Create a bar graph showing the popularity of different product types
-
-plt.savefig('proudct_types.png', bbox_inches='tight')
