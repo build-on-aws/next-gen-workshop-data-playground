@@ -3,7 +3,12 @@ import requests
 import boto3
 import logging
 
-# TODO: Load 2 CSV files
+
+# Create a function to make a request to a URL and get the text from the page
+def get_text(url):
+    response = requests.get(url)
+    return response.text
+
 sources = "data/sources.csv"
 page_content = "data/page_content.csv"
 
@@ -14,23 +19,10 @@ sources_df = pd.read_csv(sources)
 page_content_df = pd.read_csv(page_content)
 
 # Combine the CSVs into one CSV
-# TODO: Combine these two CSVs into one
 combined_df = pd.concat([sources_df, page_content_df], axis=1)
 
 # Save the df
 combined_df.to_csv("combined.csv", index=False)
-
-
-# Create a function to make a request to a URL and get the text from the page
-# TODO: Write a function that takes a URL as input and returns the text of the webpage
-def get_text(url):
-    response = requests.get(url)
-    return response.text
-
-
-# Upload the final CSV to an S3 bucket
-# TODO: Write code for uploading the final combined CSV to an S3 bucket
-
 
 # Function to upload a file to s3
 def upload_file_to_s3(file_name, bucket, object_name=None):
